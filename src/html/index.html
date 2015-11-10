@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>State machine simulator</title>
+    <script type="text/javascript" src="machine.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+    var automat = new Automat();
+    var s1 = automat.createState()
+    var s2 = automat.createState()
+
+    automat.createTranzit(s1, s2, 'a');
+    automat.createTranzit(s2, s1, 'b');
+
+    automat.setActiveState(s1)
+    automat.setFinalStates([ s1 ])
+
+    stream = new SourceStream([ "a", "b", "a", "b" ]);
+
+    while (!stream.eos())
+    {
+        automat.feed(stream.get())
+    }
+
+    if (!automat.isInFinal())
+    {
+        throw "Automat is not in final state";
+    }
+
+    function render()
+    {
+        repr1 = new StateRepresenter(s1)
+        repr1.x = 50
+        repr1.y = 100
+
+        cnv = document.getElementById("canvas");
+        repr1.render(cnv.getContext("2d"))
+    }
+
+</script>
+
+    <canvas id="canvas" width="500px" height="500px"></canvas>
+    <button onclick="render()">R</button>
+
+</body>
+</html>
