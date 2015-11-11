@@ -79,6 +79,11 @@ Automat.prototype.isFinalState = function(state) {
     return this._finalStates.indexOf(state) != -1;
 };
 
+Automat.prototype.getStates = function()
+{
+    return this._states.slice();
+};
+
 Automat.prototype.setActiveState = function (state)
 {
     if (this._activeState !== state)
