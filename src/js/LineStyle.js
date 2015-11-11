@@ -8,5 +8,5 @@ function LineStyle (color, width)
 LineStyle.prototype.setStyle = function(context)
 {
     context.lineWidth = this.width;
-    context.strokeStyle = self.color;
+    context.strokeStyle = this.color;
 };

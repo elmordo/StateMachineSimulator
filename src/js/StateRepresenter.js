@@ -6,10 +6,10 @@ function StateRepresenter (state)
     this.y = 0;
     this.r = 15;
 
-    this.normalStyle = new LineStyle("000", 2);
-    this.activeStyle = new LineStyle("F00", 2);
-    this.finalStyle = new LineStyle("000", 4);
-    this.finalActiveStyle = new LineStyle("f00", 4);
+    this.normalStyle = new LineStyle("#000000", 2);
+    this.activeStyle = new LineStyle("#ff000", 2);
+    this.finalStyle = new LineStyle("#000000", 4);
+    this.finalActiveStyle = new LineStyle("#ff0000", 4);
 }
 
 StateRepresenter.prototype.render = function(context)

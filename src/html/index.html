@@ -19,6 +19,14 @@
 
     stream = new SourceStream([ "a", "b", "a", "b" ]);
 
+    repr1 = new StateRepresenter(s1)
+    repr1.x = 50
+    repr1.y = 100
+
+    repr2 = new StateRepresenter(s2)
+    repr2.x = 100
+    repr2.y = 100
+
     while (!stream.eos())
     {
         automat.feed(stream.get())
@@ -31,12 +39,9 @@
 
     function render()
     {
-        repr1 = new StateRepresenter(s1)
-        repr1.x = 50
-        repr1.y = 100
-
         cnv = document.getElementById("canvas");
         repr1.render(cnv.getContext("2d"))
+        repr2.render(cnv.getContext("2d"))
     }
 
 </script>
